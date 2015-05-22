@@ -1,5 +1,5 @@
 # osn2osm
-Transform OpenStreetMap notes (*.osn) to (*.osm) file
+Transform OpenStreetMap notes (\*.osn) to (\*.osm) file
 
 ## Usage
 
