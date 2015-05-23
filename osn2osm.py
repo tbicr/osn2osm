@@ -11,8 +11,8 @@ template = '''<?xml version="1.0" encoding="UTF-8"?>
   <bounds minlon="-180" minlat="-90" maxlon="180" maxlat="90" origin="http://www.openstreetmap.org/api/0.6"/>
 {% for note in notes %}
   <node id="{{ note.id }}" version="{{ note.version }}" timestamp="{{ note.timestamp }}" uid="{{ note.uid }}" user="{{ note.user }}" changeset="{{ note.changeset }}" lat="{{ note.lat }}" lon="{{ note.lon }}">
-    <tag k="title" v="{{ note.title }}"/>
-    <tag k="content" v="{{ note.content }}"/>
+    <tag k="name" v="{{ note.content }}"/>
+    <tag k="osm_note" v="yes"/>
   </node>{% endfor %}
 </osm>
 '''
@@ -61,13 +61,6 @@ class Note(object):
     @property
     def timestamp(self):
         return self.created_at
-
-    @property
-    def title(self):
-        title = self.comments[0].text
-        if len(title) > 77:
-            return '%s...' % title[:77]
-        return title
 
     @property
     def content(self):
