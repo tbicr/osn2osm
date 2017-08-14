@@ -52,12 +52,18 @@ class Note(object):
 
     @property
     def user(self):
+    if len(self.comments) != 0:
         return self.comments[0].user
-
+    else: 
+		    return ''
+  
     @property
     def uid(self):
+    if len(self.comments) != 0:
         return self.comments[0].uid
-
+    else: 
+		    return ''
+      
     @property
     def timestamp(self):
         return self.created_at
