@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import sys
+import warnings
 
 import jinja2
 import lxml.etree
@@ -81,7 +82,11 @@ def parse_notes(notes_dump):
     for event, element in lxml.etree.iterparse(notes_dump, events=('end',),
                                                tag='note', recover=True):
         if not element.attrib.get('closed_at'):
-            yield Note(element)
+            node = Note(element)
+            if node.comments:
+                yield node
+            else:
+                warnings.warn(f'{node.id} note has no comments')
         _clear_xml_element(element)
 
 
