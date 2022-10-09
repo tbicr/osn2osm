@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='osn2osm',
-    version='0.0.1',
+    version='0.0.2',
     description='Transform OpenStreetMap notes (*.osn) to (*.osm) file.',
     author='Pavel Tyslacki',
     author_email='pavel.tyslacki@gmail.com',
