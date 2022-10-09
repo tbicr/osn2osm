@@ -82,11 +82,11 @@ def parse_notes(notes_dump):
     for event, element in lxml.etree.iterparse(notes_dump, events=('end',),
                                                tag='note', recover=True):
         if not element.attrib.get('closed_at'):
-            node = Note(element)
-            if node.comments:
-                yield node
+            note = Note(element)
+            if note.comments:
+                yield note
             else:
-                warnings.warn(f'{node.id} note has no comments')
+                warnings.warn(f'{note.id} note has no comments')
         _clear_xml_element(element)
 
 
